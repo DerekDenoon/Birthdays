@@ -2,15 +2,24 @@ import java.util.stream.IntStream;
 
 public class Simulation {
     public static void main(String[] args) {
-        Birthday[] birthdays = new Birthday[100];
-        //MAKE GENERATOR FUNCTION
-        for (int i = 0; i < 100; i++) {
+        System.out.println(simuluate(87,10000));
 
-            birthdays[i] = new Birthday((int) (Math.random() * 10 ));
+    }
 
 
+    public static double simuluate(int numToGenerate, int trials){
+        Birthday[] birthdays;
+        double threeSame = 0;
+
+        for (int i = 0; i < trials; i++) {
+            birthdays = Birthday.generateBirthdays(numToGenerate);
+            if (Birthday.threeSame(birthdays)){
+                threeSame++;
+            }
         }
 
-        System.out.println(Birthday.threeSame(birthdays));
+        threeSame = threeSame / trials;
+
+        return threeSame;
     }
 }

@@ -47,4 +47,18 @@ public class Birthday {
         return threeSame > 0;
 
     }
+
+    public static Birthday[] generateBirthdays(int numToGenerate){
+        Birthday[] birthdays = new Birthday[numToGenerate];
+        for (int i = 0; i < numToGenerate; i++) {
+            // 0 to 365
+            birthdays[i] = new Birthday((int) (Math.random() * (365)));
+            if(birthdays[i].getBirthday() == 365){
+                if(Math.random() < 0.75){
+                    birthdays[i].setBirthday((int) (Math.random() * (364)));
+                }
+            }
+        }
+        return  birthdays;
+    }
 }
